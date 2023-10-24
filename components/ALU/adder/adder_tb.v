@@ -22,7 +22,7 @@ module adder_tb;
     integer i, mm_count;
 
 	initial begin
-		$dumpfile("tb_comb_shifters.vcd");
+		$dumpfile("adder_tb.vcd");
 		$dumpvars();
 
 		mm_count = 0;	// zero mismatch count
