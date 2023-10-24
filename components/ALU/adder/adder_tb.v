@@ -2,17 +2,15 @@ module adder_tb;
 
     // Creating inputs
     logic [63:0]a, b;
-    logic c_in;
 
     // Creating outputs
     logic [63:0]sum;
-    logic c_out;
 
     // Instantiate the unit under test
     sixty_four_bit_adder uut (.*);
 
     // Set parameters
-    parameter COLUMNS = 194, ROWS = 1, INPUTS = 129;
+    parameter COLUMNS = 192, ROWS = 1000, INPUTS = 128;
 
     // Declare test_vector and single_vector
     logic [COLUMNS-1:0] test_vector [0:ROWS-1];

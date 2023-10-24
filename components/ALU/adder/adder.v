@@ -68,10 +68,9 @@ module sixty_four_bit_adder(a, b, c_in, sum, c_out);
     input c_in;
     input [63:0]a, b;
     output [63:0]sum;
-    output c_out;
-    wire w1;
+    wire w1,w2;
 
     thirty_two_bit_adder t0(.a[31:0](a[31:0]), .b[31:0](b[31:0]), .c_in(c_in), .c_out(w1), .sum[31:0](sum[31:0]));
-    thirty_two_bit_adder t1(.a[31:0](a[63:32]), .b[31:0](b[63:32]), .c_in(w1), .c_out(c_out), .sum[31:0](sum[63:32]));
+    thirty_two_bit_adder t1(.a[31:0](a[63:32]), .b[31:0](b[63:32]), .c_in(w1), .c_out(w2), .sum[31:0](sum[63:32]));
 
 endmodule   :sixty_four_bit_adder
