@@ -73,6 +73,7 @@ module adder_tb();
     
     //outputs
     wire[63:0]   sum;
+    reg[63:0] expected_val;
     
     //Instantiate 64 bit adder
     sixty_four_bit_adder a1(.a(a), .b(b), .sum(sum), .c_in(c_in));
@@ -82,15 +83,25 @@ module adder_tb();
         begin
              // check minimum values 
             #10 a=0; b=0; c_in=0; // no carry for unsigned
+            expected_val = a+b+c_in;
             #10 a=3;b=4;c_in=1; //testing smaller numbers
+            expected_val = a+b+c_in;
             #10 a=-2147483648 ; b=-2147483648; c_in=1; //min value for signed
+            expected_val = a+b+c_in;
             // check max values
             #10 a=2147483648; b=2147483647; c_in=0; // without carry will yield 4294967295
+            expected_val = a+b+c_in;
             //test overflow
             #10 a=2147483648; b=2147483647; c_in=1; // with carry will yield overflow 4294967296
+            expected_val = a+b+c_in;
             #10 a=-2147483648; b=-2147483648; c_in=0;//signed overflow
+            expected_val = a+b+c_in;
             //Testing Signed and Unsigned values
             #10 a=-58654565; b=7777777; c_in=1; //valid input
+            expected_val = a+b+c_in;
+//            #10 a=18446744073709551615; b=0; c_in=1;
+//            expected_val = a+b+c_in;
+            
             #10 $finish;
         end
 endmodule
