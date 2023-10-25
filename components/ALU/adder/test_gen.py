@@ -11,9 +11,11 @@ mm = 0
 with open("adder_tb.txt", 'w') as f:
     for i in range(1000):
         a.append(random.getrandbits(64))
+        a[i] = (a[i] & 0x0FFFFFFFFFFFFFFF)
         b.append(random.getrandbits(64))
+        b[i] = (b[i] & 0x0FFFFFFFFFFFFFFF)
         sum.append(a[i] + b[i])
-        line = "{0:064b}_{0:064b}_{0:064b}\n".format(a[i], b[i], sum[i])
+        line = "{0:064b}_{1:064b}_{2:064b}\n".format(a[i], b[i], sum[i])
         f.write(line)
 f.close()
         

@@ -1,20 +1,20 @@
 module adder_tb;
-
+    
     // Creating inputs
-    logic [63:0]a, b;
+    reg [63:0]a, b;
 
     // Creating outputs
-    logic [63:0]sum;
+    //reg [63:0]sum;
 
     // Instantiate the unit under test
-    sixty_four_bit_adder uut (.*);
+    sixty_four_bit_adder uut (a, b, sum);
 
     // Set parameters
     parameter COLUMNS = 192, ROWS = 1000, INPUTS = 128;
 
     // Declare test_vector and single_vector
-    logic [COLUMNS-1:0] test_vector [0:ROWS-1];
-    logic [COLUMNS-1:0] single_vector;
+    reg [COLUMNS-1:0] test_vector [0:ROWS-1];
+    reg [COLUMNS-1:0] single_vector;
 
     // index and mismatch count
     integer i, mm_count;
@@ -34,15 +34,17 @@ module adder_tb;
 			single_vector = test_vector [i];
 			
 			// now apply the stimuli to from the vector to the input signals
-			{c_in, a, b} = single_vector[COLUMNS-1:COLUMNS-INPUTS];
+			a = single_vector[COLUMNS-1:COLUMNS-64];
+			b = single_vector[COLUMNS-65:COLUMNS-128];
+			
 			#10;	// wait 10 ns for inputs to settle
 
 			// compare to expected value
 			if (sum !== single_vector[COLUMNS-INPUTS-1:0]) begin
 
 				// display mismatch
-				$display("Mismatch--loop index i: %d; input: %b_%b_%b, expected: %b, received: %b",
-					i, c_in, a, b, single_vector[COLUMNS-INPUTS-1:0], sum);
+				$display("Mismatch--loop index i: %d; input: %b_%b, expected: %b, received: %b",
+					i, a, b, single_vector[COLUMNS-INPUTS-1:0], sum);
 
 				mm_count = mm_count + 1;	// increment mismatch count
 
