@@ -43,10 +43,10 @@ module sixteen_bit_adder(a, b, c_in, sum, c_out);
     output c_out;
     wire w1, w2, w3;
 
-    four_bit_adder f0(.a[3:0](a[3:0]), .b[3:0](b[3:0]), .c_in(c_in), .c_out(w1), .sum[3:0](sum[3:0]));
-    four_bit_adder f1(.a[3:0](a[7:4]), .b[3:0](b[7:4]), .c_in(w1), .c_out(w2), .sum[3:0](sum[7:4]));
-    four_bit_adder f2(.a[3:0](a[11:8]), .b[3:0](b[11:8]), .c_in(w2), .c_out(w3), .sum[3:0](sum[11:8]));
-    four_bit_adder f3(.a[3:0](a[15:12]), .b[3:0](b[15:12]), .c_in(w3), .c_out(c_out), .sum[3:0](sum[15:12]));
+    four_bit_adder f0(.a(a[3:0]), .b(b[3:0]), .c_in(c_in), .c_out(w1), .sum(sum[3:0]));
+    four_bit_adder f1(.a(a[7:4]), .b(b[7:4]), .c_in(w1), .c_out(w2), .sum(sum[7:4]));
+    four_bit_adder f2(.a(a[11:8]), .b(b[11:8]), .c_in(w2), .c_out(w3), .sum(sum[11:8]));
+    four_bit_adder f3(.a(a[15:12]), .b(b[15:12]), .c_in(w3), .c_out(c_out), .sum(sum[15:12]));
 
 endmodule   :sixteen_bit_adder
 
@@ -58,8 +58,8 @@ module thirty_two_bit_adder(a, b, c_in, sum, c_out);
     output c_out;
     wire w1;
 
-    sixteen_bit_adder s0(.a[15:0](a[15:0]), .b[15:0](b[15:0]), .c_in(c_in), .c_out(w1), .sum[15:0](sum[15:0]));
-    sixteen_bit_adder s1(.a[15:0](a[31:16]), .b[15:0](b[31:16]), .c_in(w1), .c_out(c_out), .sum[15:0](sum[31:16]));
+    sixteen_bit_adder s0(.a(a[15:0]), .b(b[15:0]), .c_in(c_in), .c_out(w1), .sum(sum[15:0]));
+    sixteen_bit_adder s1(.a(a[31:16]), .b(b[31:16]), .c_in(w1), .c_out(c_out), .sum(sum[31:16]));
 
 endmodule   :thirty_two_bit_adder
 
@@ -70,7 +70,7 @@ module sixty_four_bit_adder(a, b, c_in, sum, c_out);
     output [63:0]sum;
     wire w1,w2;
 
-    thirty_two_bit_adder t0(.a[31:0](a[31:0]), .b[31:0](b[31:0]), .c_in(c_in), .c_out(w1), .sum[31:0](sum[31:0]));
-    thirty_two_bit_adder t1(.a[31:0](a[63:32]), .b[31:0](b[63:32]), .c_in(w1), .c_out(w2), .sum[31:0](sum[63:32]));
+    thirty_two_bit_adder t0(.a(a[31:0]), .b(b[31:0]), .c_in(c_in), .c_out(w1), .sum(sum[31:0]));
+    thirty_two_bit_adder t1(.a(a[63:32]), .b(b[63:32]), .c_in(w1), .c_out(w2), .sum(sum[63:32]));
 
 endmodule   :sixty_four_bit_adder
