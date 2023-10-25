@@ -64,7 +64,7 @@ module thirty_two_bit_adder(a, b, c_in, sum, c_out);
 endmodule   :thirty_two_bit_adder
 
 
-module sixty_four_bit_adder(a, b, c_in, sum, c_out);
+module sixty_four_bit_adder(a, b, c_in, sum);
     input c_in;
     input [63:0]a, b;
     output [63:0]sum;
