@@ -64,13 +64,18 @@ module thirty_two_bit_adder(a, b, c_in, sum, c_out);
 endmodule   :thirty_two_bit_adder
 
 
-module sixty_four_bit_adder(a, b, c_in, sum);
+module sixty_four_bit_adder(a, b, c_in, sum, ovf);
     input c_in;
     input [63:0]a, b;
     output [63:0]sum;
-    wire w1,w2;
+    wire w1,c_out;
+    output reg ovf;
 
     thirty_two_bit_adder t0(.a(a[31:0]), .b(b[31:0]), .c_in(c_in), .c_out(w1), .sum(sum[31:0]));
-    thirty_two_bit_adder t1(.a(a[63:32]), .b(b[63:32]), .c_in(w1), .c_out(w2), .sum(sum[63:32]));
+    thirty_two_bit_adder t1(.a(a[63:32]), .b(b[63:32]), .c_in(w1), .c_out(c_out), .sum(sum[63:32]));
+    
+    always @ *
+        begin
+            if ((a[63]==0 && b[63]==0 && sum[63]==0 && c_out==0) || (a[63]==1 && b[63]==1 sum[63] == 1  || a[63]
 
 endmodule   :sixty_four_bit_adder

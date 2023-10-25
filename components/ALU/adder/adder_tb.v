@@ -99,8 +99,8 @@ module adder_tb();
             //Testing Signed and Unsigned values
             #10 a=-58654565; b=7777777; c_in=1; //valid input
             expected_val = a+b+c_in;
-//            #10 a=18446744073709551615; b=0; c_in=1;
-//            expected_val = a+b+c_in;
+            #10 a=64'd18446744073709551615; b=0; c_in=1;
+            expected_val = a+b+c_in;
             
             #10 $finish;
         end
