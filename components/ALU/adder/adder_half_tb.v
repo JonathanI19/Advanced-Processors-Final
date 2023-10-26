@@ -4,12 +4,11 @@ module adder_half_tb();
 
     //inputs
     reg a,b;
-    reg c_in;
     
     //outputs
     wire c_out;
     wire sum;
-    reg expected_sum, expected_c_out;
+    reg expected_c_out, expected_sum;
     
     //Instantiate 64 bit adder
     half_adder a1(.a(a), .b(b), .sum(sum), .c_out(c_out));
