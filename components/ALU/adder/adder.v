@@ -76,6 +76,10 @@ module sixty_four_bit_adder(a, b, c_in, sum, ovf);
     
     always @ *
         begin
-            if ((a[63]==0 && b[63]==0 && sum[63]==0 && c_out==0) || (a[63]==1 && b[63]==1 sum[63] == 1  || a[63]
+            if((a[63] == 0 && b[63] == 0 && sum[63] == 1) || (a[63] == 1 && b[63] == 1 && sum[63] == 0))
+                ovf = 1;
+            else 
+                ovf = 0;
+        end
 
 endmodule   :sixty_four_bit_adder
