@@ -18,28 +18,28 @@ module adder_full_tb();
     initial
         begin
             // Check various test cases
-            #10 a=1d'0; b=1d'0; c_in=1d'0;
+            #10 a=1'd0; b=1'd0; c_in=1'd0;
             expected_val = a+b+c_in;
 
-            #10 a=1d'0; b=1d'0; c_in=1d'1;
+            #10 a=1'd0; b=1'd0; c_in=1'd1;
             expected_val = a+b+c_in;
 
-            #10 a=1d'0; b=1d'1; c_in=1d'0;
+            #10 a=1'd0; b=1'd1; c_in=1'd0;
             expected_val = a+b+c_in;
 
-            #10 a=1d'0; b=1d'1; c_in=1d'1;
+            #10 a=1'd0; b=1'd1; c_in=1'd1;
             expected_val = a+b+c_in;
 
-            #10 a=1d'1; b=1d'0; c_in=1d'0;
+            #10 a=1'd1; b=1'd0; c_in=1'd0;
             expected_val = a+b+c_in;
 
-            #10 a=1d'1; b=1d'0; c_in=1d'1;
+            #10 a=1'd1; b=1'd0; c_in=1'd1;
             expected_val = a+b+c_in;
 
-            #10 a=1d'1; b=1d'1; c_in=1d'0;
+            #10 a=1'd1; b=1'd1; c_in=1'd0;
             expected_val = a+b+c_in;
 
-            #10 a=1d'1; b=1d'1; c_in=1d'1;
+            #10 a=1'd1; b=1'd1; c_in=1'd1;
             expected_val = a+b+c_in;
             
             
