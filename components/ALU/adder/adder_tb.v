@@ -9,9 +9,10 @@ module adder_tb();
     //outputs
     wire[63:0]   sum;
     reg[63:0] expected_val;
+    wire ovf;
     
     //Instantiate 64 bit adder
-    sixty_four_bit_adder a1(.a(a), .b(b), .sum(sum), .c_in(c_in));
+    sixty_four_bit_adder a1(.a(a), .b(b), .sum(sum), .c_in(c_in), .ovf(ovf));
     
     //changing values every 10ns
     initial
