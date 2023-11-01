@@ -3,25 +3,32 @@
 module multiplier(mcand, b, prod);
 
     // I/O
-    input [63:0]mcand, b;
+    input [63:0]mcand;
+    input wire [63:0]b;
     output reg [127:0]prod;
 
     // Vars
     wire ovf;
-    assign wire c_in = 0;
-    reg [63:0]sum;
-    reg [63:0]a_in, b_in;
+    wire c_in = 0;
+    wire [63:0]sum;
+    integer i;        
 
-    // Storing b in right half of product
-    prod[63:0] = b;
+    // Execute every time input values (mcand or b) are changed
+    always @(mcand or b) begin
 
-    sixty_four_bit_adder s0(.a(mcand), .b(prod[127:64]), .c_in(c_in), .sum(sum), .ovf(ovf));
+        // Place b in right half of product
+        prod = {64'h0000000000000000, b};
+                
+        // Execute 64 times
+        for(i = 0; i < 64; i = i + 1) begin
 
-    initial begin
-        for(integer i = 0; i < 64; i = i + 1) begin
-            if(prod[0] == 1)
-                prod[127:64] = sum;
-            prod >> 1;
+            // If LSB is 1, add left half of product and mcand and store in left half of product
+            if(prod[0] == 1'b1) begin
+                prod[127:64] = prod[127:64]+mcand;
+            end
+
+            // Bit shift product right 1
+            prod = prod >> 1;
         end
     end
 

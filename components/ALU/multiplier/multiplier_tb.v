@@ -6,7 +6,7 @@ module multiplier_tb();
     reg[63:0] a,b;
     
     //outputs
-    wire[63:0] prod;
+    wire[127:0] prod;
     
     // Additional vars
     reg[127:0] expected_val;
@@ -14,27 +14,28 @@ module multiplier_tb();
     //Instantiate subtractor
     multiplier m0(.mcand(a), .b(b), .prod(prod));
     
+    
+    
     //changing values every 10ns
     initial
         begin
-            // Check Min signed * max signed
-            #10 a=-64'd9223372036854775808; b=64'd9223372036854775807;
+
+            #10 a=64'd345; b=64'd922;
+            expected_val = a*b;
+ 
+            #10 a=64'd3; b=64'd5;
+            expected_val = a*b;
+
+            #10 a=-64'd345; b=64'd22;
+            expected_val = a*b;
+
+            #10 a=-64'd345; b=-64'd22;
             expected_val = a*b;
             
-            // Checking random multiplication w/both positive
-            #10 a=64'd2036854775808;b=64'd9223372036854;
+            #10 a=64'hFFFFFFFFFFFFFFFF; b=64'hFFFFFFFFFFFFFFFF;
             expected_val = a*b;
             
-            // Checking random multiplication with one negative
-            #10 a=64'd2036854775808;b=-64'd9223372036854;
-            expected_val = a*b;
-            
-            // Testing multiplying 2 max values
-            #10 a=64'd18446744073709551615 ; b=64'd18446744073709551615;
-            expected_val = a*b;
-            
-            // Testing multiplying 2 signed min values
-            #10 a=-64'd9223372036854775808; b=-64'd9223372036854775808;
+            #10 a=64'd4567889; b=64'd23482390;
             expected_val = a*b;
             
             #10 $finish;
