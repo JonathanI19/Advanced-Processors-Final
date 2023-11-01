@@ -1,23 +1,37 @@
 // multiplier module
 // Accepts 64-bit inputs with 128-bit output
-module multiplier(mcand, b, prod);
+module multiplier(a, b, prod, ovf);
 
     // I/O
-    input [63:0]mcand;
-    input wire [63:0]b;
+    input [63:0]a, b;
     output reg [127:0]prod;
+    output reg ovf;
 
     // Vars
-    wire ovf;
     wire c_in = 0;
     wire [63:0]sum;
-    integer i;        
+    integer i, num_neg; 
+    reg [63:0]mcand, b_temp;       
 
     // Execute every time input values (mcand or b) are changed
-    always @(mcand or b) begin
-
+    always @(a or b) begin
+        num_neg = 0;
+        mcand = a;
+        b_temp = b;
+        ovf = 0;
+        
+        if (mcand[63] == 1) begin
+            mcand = ~mcand + 1;
+            num_neg = num_neg + 1;
+        end
+        
+        if (b_temp[63] == 1) begin
+            b_temp = ~b_temp + 1;
+            num_neg = num_neg + 1;
+        end
+        
         // Place b in right half of product
-        prod = {64'h0000000000000000, b};
+        prod = {64'h0000000000000000, b_temp};
                 
         // Execute 64 times
         for(i = 0; i < 64; i = i + 1) begin
@@ -30,6 +44,15 @@ module multiplier(mcand, b, prod);
             // Bit shift product right 1
             prod = prod >> 1;
         end
+        
+        if (num_neg == 1) begin
+            prod = ~prod + 1;
+        end
+        
+        if (((num_neg == 0 || num_neg == 2) && prod[127] == 1) || (num_neg == 1 && prod[127] == 0)) begin
+            ovf = 1;
+        end
+        
     end
 
 endmodule   :multiplier
