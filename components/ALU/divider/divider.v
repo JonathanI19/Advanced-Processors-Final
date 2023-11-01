@@ -20,8 +20,8 @@ module divider(a, div, r, quo);
         // Start by shifting rem left 1 bit
         rem = rem << 1;              
 
-        // Execute 31 times
-        for(i = 0; i < 31; i = i + 1) begin
+        // Execute 64 times
+        for(i = 0; i < 64; i = i + 1) begin
                 
             // Subtract div from left half of rem and store in left half of rem
             rem[127:64] = rem[127:64] - div;
