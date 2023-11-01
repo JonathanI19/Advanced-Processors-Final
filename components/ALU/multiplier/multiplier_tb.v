@@ -11,7 +11,7 @@ module multiplier_tb();
     // Additional vars
     reg[127:0] expected_val;
 
-    //Instantiate subtractor
+    //Instantiate multiplier
     multiplier m0(.mcand(a), .b(b), .prod(prod));
     
     
