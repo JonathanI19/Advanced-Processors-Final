@@ -21,22 +21,22 @@ module multiplier_tb();
         begin
 
             #10 a=64'd345; b=64'd922;
-            expected_val = a*b;
+            expected_val = $signed(a*b);
  
             #10 a=64'd3; b=64'd5;
-            expected_val = a*b;
+            expected_val = $signed(a*b);
 
             #10 a=-64'd345; b=64'd22;
-            expected_val = a*b;
+            expected_val = $signed(a*b);
 
             #10 a=-64'd345; b=-64'd22;
-            expected_val = a*b;
+            expected_val = $signed(a*b);
             
             #10 a=64'hFFFFFFFFFFFFFFFF; b=64'hFFFFFFFFFFFFFFFF;
             expected_val = $signed(a*b);
             
             #10 a=64'd4567889; b=64'd23482390;
-            expected_val = a*b;
+            expected_val = $signed(a*b);
             
             #10 $finish;
         end

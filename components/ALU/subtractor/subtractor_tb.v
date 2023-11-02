@@ -20,27 +20,27 @@ module subtractor_tb();
         begin
             // Check Min signed - max signed
             #10 a=-64'd9223372036854775808; b=64'd9223372036854775807;
-            expected_val = a-b;
+            expected_val = $signed(a-b);
             
             // Checking random subtraction w/both positive
             #10 a=64'd2036854775808;b=64'd9223372036854;
-            expected_val = a-b;
+            expected_val = $signed(a-b);
             
             // Checking random subtraction a - (-b)
             #10 a=64'd2036854775808;b=-64'd9223372036854;
-            expected_val = a-b;
+            expected_val = $signed(a-b);
             
             // Testing adding 2 max values
             #10 a=64'd18446744073709551615 ; b=64'd18446744073709551615;
-            expected_val = a-b;
+            expected_val = $signed(a-b);
             
             // Testing adding 2 max values
             #10 a=64'd18446744073709551615 ; b=64'd18446744073709551615;
-            expected_val = a-b;
+            expected_val = $signed(a-b);
             
             // Testing subtracting 2 min values
             #10 a=-64'd9223372036854775808; b=-64'd9223372036854775808;
-            expected_val = a-b;
+            expected_val = $signed(a-b);
             
             #10 $finish;
         end
