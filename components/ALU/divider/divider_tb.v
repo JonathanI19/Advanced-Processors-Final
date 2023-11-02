@@ -21,20 +21,20 @@ module divider_tb();
         begin
 
             #10 a=64'd8; b=64'd2;
-            expected_quo = a/b;
-            expected_rem = a%b;
+            expected_quo = $signed(a/b);
+            expected_rem = $signed(a%b);
 
             #10 a=64'd9; b=64'd2;
-            expected_quo = a/b;
-            expected_rem = a%b;
+            expected_quo = $signed(a/b);
+            expected_rem = $signed(a%b);
 
             #10 a=64'd42398284; b=64'd54389;
-            expected_quo = a/b;
-            expected_rem = a%b;
+            expected_quo = $signed(a/b);
+            expected_rem = $signed(a%b);
 
             #10 a=64'd34224; b=64'd789799;
-            expected_quo = a/b;
-            expected_rem = a%b;
+            expected_quo = $signed(a/b);
+            expected_rem = $signed(a%b);
  
             
             #10 $finish;
