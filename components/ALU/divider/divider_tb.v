@@ -7,12 +7,13 @@ module divider_tb();
     
     //outputs
     wire[63:0] r, quo;
-    
+    wire ovf;
+
     // Additional vars
     reg[63:0] expected_rem, expected_quo;
 
     //Instantiate divider
-    divider d0(.a(a), .div(b), .r(r), .quo(quo));
+    divider d0(.a(a), .div(b), .r(r), .quo(quo), .ovf(ovf));
     
     
     
