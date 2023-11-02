@@ -13,18 +13,20 @@ module multiplier(a, b, prod, ovf);
     integer i, num_neg; 
     reg [63:0]mcand, b_temp;       
 
-    // Execute every time input values (mcand or b) are changed
+    // Execute every time input values (a or b) are changed
     always @(a or b) begin
+
+        // Variable declarations
         num_neg = 0;
         mcand = a;
         b_temp = b;
         ovf = 0;
         
+        // Performing twos complement as needed and counting num of negatives
         if (mcand[63] == 1) begin
             mcand = ~mcand + 1;
             num_neg = num_neg + 1;
         end
-        
         if (b_temp[63] == 1) begin
             b_temp = ~b_temp + 1;
             num_neg = num_neg + 1;
@@ -45,10 +47,12 @@ module multiplier(a, b, prod, ovf);
             prod = prod >> 1;
         end
         
+        // twos complement if result should be negative
         if (num_neg == 1) begin
             prod = ~prod + 1;
         end
         
+        // Overflow handling
         if (((num_neg == 0 || num_neg == 2) && prod[127] == 1) || (num_neg == 1 && prod[127] == 0)) begin
             ovf = 1;
         end
