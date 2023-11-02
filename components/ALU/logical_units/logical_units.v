@@ -3,7 +3,7 @@ module AND(a, b, result);
 
     // I/O
     input [63:0]a, b;
-    output [63:0]result;
+    output wire [63:0]result;
 
     assign result = a & b;
 
@@ -14,7 +14,7 @@ module OR(a, b, result);
 
     // I/O
     input [63:0]a, b;
-    output [63:0]result;
+    output wire [63:0]result;
 
     assign result = a | b;
 
@@ -25,7 +25,7 @@ module XOR(a, b, result);
    
     // I/O
     input [63:0]a, b;
-    output [63:0]result;
+    output wire [63:0]result;
 
     assign result = a ^ b;
 

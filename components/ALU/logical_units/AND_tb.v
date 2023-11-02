@@ -3,7 +3,8 @@
 module AND_tb();
 
     //registers
-    reg[63:0] a,b,result;
+    reg[63:0] a,b, expected_val;
+    wire[63:0] result;
 
     //Instantiate 64 bit adder
     AND a1(.a(a), .b(b), .result(result));
