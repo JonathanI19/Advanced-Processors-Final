@@ -15,4 +15,4 @@ module mux(in_0, in_1, sig, out);
             end
         end
 
-endmodule   :sixty_four_bit_adder
+endmodule   :mux
