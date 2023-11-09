@@ -2,7 +2,7 @@
 module shift_left_1(in, out);
 
     // I/O
-    input [63:0]in;
+    input wire [63:0]in;
     output reg [63:0]out;
 
     always @ *

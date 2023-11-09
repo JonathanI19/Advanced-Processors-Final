@@ -3,11 +3,11 @@
 module mux_tb();
 
     //inputs
-    reg[63:0] a,b;
+    reg [63:0]a,b;
     reg sig;
     
     //outputs
-    reg[63:0] out;
+    wire [63:0]out;
     
     //Instantiate mux
     mux m1(.in_0(a), .in_1(b), .sig(sig), .out(out));

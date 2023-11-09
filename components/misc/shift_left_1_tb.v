@@ -3,10 +3,10 @@
 module shift_left_1_tb();
 
     //inputs
-    reg[63:0] in;
+    reg [63:0] in;
 
     //outputs
-    reg[63:0] out;
+    wire [63:0] out;
     
     //Instantiate mux
     shift_left_1 s1(.in(in), .out(out));
@@ -17,7 +17,7 @@ module shift_left_1_tb();
             
             #10 in = 64'b000111111111001;
 
-            #10 sig = 64'b110101010011010;
+            #10 in = 64'b110101010011010;
             
             #10 $finish;
         end
