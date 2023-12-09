@@ -19,7 +19,7 @@ module immediate_generator_tb();
             expected_out = $signed(in[31:20]);
 
             // Test Branch Instruction
-            #10 in = 32'b00111000100011100000001011100111;
+            #10 in = 32'b00111000100011100000001011100011;
             expected_out = $signed(in[31:20]);
 
             // Test Store Instruction imm = in[31:25] + in[11:7]
