@@ -10,7 +10,7 @@ module immediate_generator(in, out);
             // Utilized by I-Type, S-Type, B-Type, J-Type, and U-Type
             // Only need lw, sw, and beq per project instructions
             case(in[6:0])
-                
+
                 // Load Instruction
                 7'b0000011: out = $signed(in[31:20]);
 
@@ -19,9 +19,8 @@ module immediate_generator(in, out);
 
                 // Store Instruction
                 7'b0100011: out = $signed({in[31:25], in[11:7]});
-
-
+                
             endcase
         end
 
-endmodule   :immediate_generator
+endmodule:  immediate_generator
