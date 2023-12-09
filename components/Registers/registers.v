@@ -4,7 +4,7 @@ module registers(clk, read_register_1, read_register_2, write_register, write_da
     input [4:0] read_register_1, read_register_2, write_register;
     input [63:0] write_data;
     input clk, reg_write;
-    output [63:0] read_data_1, read_data_2;
+    output reg [63:0] read_data_1, read_data_2;
 
     // Declaring 32 32-bit registers
     reg [31:0] r [0:31];
@@ -17,10 +17,10 @@ module registers(clk, read_register_1, read_register_2, write_register, write_da
     end
 
     // Always block that executes when new indexes are passed in via read_register1/2
-    always @(read_register1, read_register_2) begin
+    always @(read_register_1, read_register_2) begin
 
         // Assign read_data_1/2 in parallel and ensure that they are treated as signed values
-        read_data_1 <= $signed(r[read_register1]);
+        read_data_1 <= $signed(r[read_register_1]);
         read_data_2 <= $signed(r[read_register_2]);
 
     end
