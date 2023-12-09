@@ -1,7 +1,7 @@
 module control(instruction, branch, mem_read, mem_reg, ALU_op, mem_write, alu_src, reg_write);
 
     // I/O
-    input [31:0] instruction;
+    input [6:0] instruction;
     output reg branch, mem_read, mem_reg, mem_write, alu_src, reg_write;
     output reg [1:0] ALU_op;
 
@@ -18,7 +18,7 @@ module control(instruction, branch, mem_read, mem_reg, ALU_op, mem_write, alu_sr
     always @ * begin
         
         // Switch statement for opcode
-        case(instruction[6:0])
+        case(instruction)
 
             // R-Type instructions
             7'b0110011: 
