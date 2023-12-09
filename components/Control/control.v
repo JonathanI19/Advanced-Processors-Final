@@ -33,6 +33,7 @@ module control(instruction, branch, mem_read, mem_reg, ALU_op, mem_write, alu_sr
                 container = 8'b1x001000;
 
             // BEQ instruction
+            // May be 7'b1100011 - Conflicting info in canvas modules
             7'b1100011:
                 container = 8'b0x000101;
 

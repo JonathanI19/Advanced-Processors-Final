@@ -15,6 +15,7 @@ module immediate_generator(in, out);
                 7'b0000011: out = $signed(in[31:20]);
 
                 // Branch Instruction
+                // May be 7'b1100011 - Conflicting info in canvas modules
                 7'b1100111: out = $signed(in[31:20]);
 
                 // Store Instruction
