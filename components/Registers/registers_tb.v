@@ -20,7 +20,7 @@ module registers_tb();
         for (integer i = 0; i < 32; i = i + 1) begin
             #10 clk = 0;
             read_register_1 <= i;
-            read_register_2 <= i + 1;
+            read_register_2 <= i;
             write_register <= i + 1;
             #10 write_data = read_data_1 + 1;
             clk = 1;
