@@ -42,9 +42,14 @@ module instruction_memory(address, instruction);
         //sw
         memory[11] = 32'b0000101 00000 00001 001 00000 0100011; // Store $1 at memory address 160
 
-
     end
 
+    always @ * begin
+
+        // Output instruction every time memory changes
+        instruction = memory[address];
+
+    end
 
 
 
