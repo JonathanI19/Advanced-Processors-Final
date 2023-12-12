@@ -31,8 +31,8 @@ module registers(clk, read_register_1, read_register_2, write_register, write_da
         // Check if write control signal is present
         if (reg_write == 1) begin
 
-            // Write data to register
-            r[write_register] = write_data;
+            // Write lower 32 bits of data to register
+            r[write_register] = write_data[31:0];
 
         end
 
