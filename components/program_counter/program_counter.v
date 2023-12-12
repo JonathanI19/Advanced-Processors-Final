@@ -1,18 +1,21 @@
 // Program counter module
-module program_counter(in, out);
+module program_counter(addr, new_addr, clk);
 
     // I/O
-    input reg [63:0]in;
-    output wire [63:0]out;
+    input [31:0]new_addr;
+    output reg [31:0]addr;
+    input wire clk;
 
+    // Start at 0 when instantiated
     initial begin
-        in = 0;
+        addr = 32'b00000000000000000000000000000000;
     end
 
-    // Increment every time input changes
-    always @ (in)
+    // Update program counter on negedge
+    always @ (negedge clk)
         begin
-            out = in;
+            // Update output address with new address (Incremented or result of branch)
+            addr = new_addr;
         end
 
 endmodule   :program_counter
