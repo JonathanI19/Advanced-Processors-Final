@@ -11,8 +11,8 @@ module program_counter(addr, new_addr, clk);
         addr = 32'b00000000000000000000000000000000;
     end
 
-    // Update program counter on negedge
-    always @ (negedge clk)
+    // Update program counter on posedge
+    always @ (posedge clk)
         begin
             // Update output address with new address (Incremented or result of branch)
             addr = new_addr;
