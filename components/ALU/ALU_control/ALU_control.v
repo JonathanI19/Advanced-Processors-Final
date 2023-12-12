@@ -15,7 +15,7 @@ module ALU_control(ALU_op, instruction, ALU_out);
     // 3'b011 - Multiplication
     // 3'b101 - AND
     // 3'b110 - OR
-    output [2:0] ALU_out;
+    output reg [2:0] ALU_out;
 
     always @ * begin
 

@@ -5,7 +5,7 @@ module ALU_control_tb();
     //inputs
     reg [1:0] ALU_op;
     reg [9:0] instruction;
-    
+    wire [2:0] ALU_out;
     
     //Instantiate mux
     ALU_control A1(.instruction(instruction), .ALU_op(ALU_op), .ALU_out(ALU_out));
@@ -45,7 +45,7 @@ module ALU_control_tb();
             #10 instruction = 10'b1111111111;
 
             // lw & sw
-            #10 instruction = 10'b0000000001;
+            #10 instruction = 10'b00000000010;
 
         // Test Branch
         #10 ALU_op = 2'b01;
