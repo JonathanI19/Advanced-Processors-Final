@@ -8,6 +8,7 @@ module ALU_control(ALU_op, instruction, ALU_out);
     input [9:0] instruction;
     
     // Controls ALU unit
+    // Shortened to 3 bits, as MSB is redundant for our case
     // 3'b000 - No Op
     // 3'b001 - Addition
     // 3'b010 - Subtraction
