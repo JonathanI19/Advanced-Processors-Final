@@ -8,15 +8,14 @@ module ALU_control(ALU_op, instruction, ALU_out);
     input [9:0] instruction;
     
     // Controls ALU unit
-    // Shortened to 3 bits, as MSB is redundant for our case
-    // 3'b000 - No Op
-    // 3'b001 - Addition
-    // 3'b010 - Subtraction
-    // 3'b100 - Division
-    // 3'b011 - Multiplication
-    // 3'b101 - AND
-    // 3'b110 - OR
-    output reg [2:0] ALU_out;
+    // 4'bxxxx - No Op
+    // 4'b0010 - Addition
+    // 4'b0110 - Subtraction
+    // 4'b0011 - Division
+    // 4'b0111 - Multiplication
+    // 4'b0000 - AND
+    // 4'b0001 - OR
+    output reg [3:0] ALU_out;
 
     always @ * begin
 
@@ -29,31 +28,31 @@ module ALU_control(ALU_op, instruction, ALU_out);
 
                     // Do Nothing
                     default:
-                        ALU_out = 3'b000;
+                        ALU_out = 4'bxxxx;
 
                     // Addition
                     10'b0000000000:
-                        ALU_out = 3'b001;
+                        ALU_out = 4'b0010;
 
                     // Subtraction
                     10'b0100000000:
-                        ALU_out = 3'b010;
+                        ALU_out = 4'b0110;
 
                     // Division
                     10'b0000001100:
-                        ALU_out = 3'b100;
+                        ALU_out = 4'b0011;
 
                     // Multiplication
                     10'b0000001000:
-                        ALU_out = 3'b011;
+                        ALU_out = 4'b0111;
 
                     // AND
                     10'b0000000111:
-                        ALU_out = 3'b101;
+                        ALU_out = 4'b0000;
 
                     // OR
                     10'b0000000110:
-                        ALU_out = 3'b110;
+                        ALU_out = 4'b0001;
 
                 endcase
             end
