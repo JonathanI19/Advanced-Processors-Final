@@ -5,19 +5,26 @@ module Processor_Top();
 
     // Program Counter output wire
     wire [31:0] pc_out;
-
+    
     // Instruction memory output wire
     wire [31:0] instruction_mem_out;
-
-    // Control module output wires
-    wire branch, mem_read, mem_reg, ALU_src, mem_write, reg_write;
-    wire [1:0] ALU_op;
 
     // Immediate Generator Output Wire
     wire [63:0] imm_gen_out;
 
     // Register Output Wire
     wire [63:0] reg_data_1_out, reg_data_2_out;
+
+    // Data Memory Output Wires
+    wire [31:0] data_mem_out;
+
+    // ALU Output Wires
+    wire [63:0] alu_out, remainder;
+    wire zero;
+
+    // Control module output wires
+    wire branch, mem_read, mem_reg, ALU_src, mem_write, reg_write;
+    wire [1:0] ALU_op;
 
     // ALU Control Output Wire
     wire [3:0] ALU_ctrl_out;
@@ -31,12 +38,6 @@ module Processor_Top();
     // Shift Left Output Wires
     wire [63:0] shift_left_out;
 
-    // Data Memory Output Wires
-    wire [31:0] data_mem_out;
-
-    // ALU Output Wires
-    wire [63:0] alu_out, remainder;
-    wire zero;
 
 
     // Program Counter Instantiation
