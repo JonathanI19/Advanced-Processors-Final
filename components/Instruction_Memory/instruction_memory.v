@@ -40,7 +40,7 @@ module instruction_memory(address, instruction);
         memory[10] = 32'b00000010011000001100000010110011; // $1 = $1 / $6
 
         //sw
-        memory[11] = 32'b00001010000000001001000000100011; // Store $1 at memory address 160
+        memory[11] = 32'b00001010000100000001000000100011; // Store $1 at memory address 160
 
     end
 
