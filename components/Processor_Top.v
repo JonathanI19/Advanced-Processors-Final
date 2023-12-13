@@ -35,7 +35,7 @@ module Processor_Top();
     wire [31:0] data_mem_out;
 
     // ALU Output Wires
-    wire [63:0] alu_out;
+    wire [63:0] alu_out, remainder;
     wire zero;
 
 
@@ -58,7 +58,7 @@ module Processor_Top();
     shift_left_1 s1(.in(imm_gen_out), .out(shift_left_out));
 
     // ALU Top Instantiation
-    ALU_Top ALU(.input_1(reg_data_1_out), .input_2(mux_1_out), .ALU_ctrl(ALU_ctrl_out), .result(alu_out), .zero(zero));
+    ALU_Top ALU(.input_1(reg_data_1_out), .input_2(mux_1_out), .ALU_ctrl(ALU_ctrl_out), .result(alu_out), .zero(zero), .remainder(remainder));
 
     // ALU Control Instantiation
     ALU_control AC(.ALU_op(ALU_op), .instruction({instruction_mem_out[31:25], instruction_mem_out[14:12]}), .ALU_out(ALU_ctrl_out));
